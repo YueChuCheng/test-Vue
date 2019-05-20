@@ -15,9 +15,11 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex';
+
 export default {
   name: "Gallery",
-  props: ["totalNews"]
+  computed:mapGetters(['totalNews'])
 };
 </script>
 

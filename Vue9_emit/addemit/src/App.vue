@@ -5,11 +5,13 @@
     <SelectedNews
       :selectedNews="selectedNews"
     />    
+     <!-- 用 @newsSelect接收來來自 child的event, 並且呼叫 onNewsSelect函數 -->
     <Section
-      :socialNews="socialNews"
-      :entertainmentNews="entertainmentNews"
-      :sportNews="sportNews"
-      :taiwanNews="taiwanNews"
+      :socialNews="news.socialNews"
+      :entertainmentNews="news.entertainmentNews"
+      :sportNews="news.sportNews"
+      :taiwanNews="news.taiwanNews"
+      @newsSelect="onNewsSelect"
     />
     <Footer/>
   </div>
@@ -27,10 +29,18 @@ export default {
   name: "App",
   data() {
     return {
+      //news是一個1x4的陣列，用來來儲存四個最近被點擊的新聞 
+      news:{
       socialNews: [],
       entertainmentNews: [],
       sportNews: [],
       taiwanNews: []
+      },
+      //用來儲存 點擊的新聞內容 
+      selected:{
+        news:[],
+        id:0
+      }
     };
   },
   computed: {
@@ -51,6 +61,19 @@ export default {
         ];      
     }
   },
+  methods:{
+    onNewSelect(news){
+      this.selected.id=this.selected.id+1;
+      if(this.selected.id==4)this.selected.id=0;
+      //必須將this.selected.news重新設定，使用到此變數的元件才會重新渲染
+      //• 為了增加渲染效率，Vue(React/Angular)前端框架設定，當狀狀態變數被 重新設定時，使⽤用狀狀態變數的元件才會被重新渲染 
+      //• 為了讓Vue重新渲染畫⾯面，我們必須把this.selected.news重新設定，而不 是只修改其中的⼀一個陣列列元件
+ 
+      this.selected.news={...this.selected.news};
+      this.selected.news[this.selected.id]=news;
+    }
+  }
+  ,
   components: {
     Nav,
     Gallery,
@@ -67,6 +90,11 @@ export default {
     this.sportNews = sportResp.data.articles;
     let taiwanResp = await gNews("/?q=taiwan");
     this.taiwanNews = taiwanResp.data.articles;
+    this.selected.news.push(this.news.socialNews[0]);
+    this.selected.news.push(this.news.sportNews[0]);
+    this.selected.news.push(this.news.entertainmentNews[0]);
+    this.selected.news.push(this.news.taiwanNews[0]);
+    
   }
 };
 </script>

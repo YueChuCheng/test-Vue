@@ -6,7 +6,10 @@
                 v-for="news in newsType"
                 :key="news.url"
                 :news="news"
+                @newsSelect="onNewsSelect"
             />
+            <!-- 用 @newsSelect接收來來自 child的event, 並且呼叫 onNewsSelect函數 -->
+ 
         </ul>
     </div>
 </template>
@@ -19,7 +22,12 @@ export default {
     components: {
         NewsListItem
     },
-    props: ['newsType','newsTitle']
+    props: ['newsType','newsTitle'],
+    methods:{
+        onNewsSelect(news){
+            this.$emit('newsSelect',news);
+        }
+    }
 }
 </script>
 

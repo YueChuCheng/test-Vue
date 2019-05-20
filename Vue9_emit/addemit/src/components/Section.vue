@@ -4,22 +4,27 @@
         id="socialNews"
         :newsType="socialNews"
         :newsTitle="'SocialNews'"
+        @newsSelect="onNewsSelect"
       />
       <NewsList 
         id="entertainmentNews"
         :newsType="entertainmentNews"
         :newsTitle="'EntertainmentNews'"
+        @newsSelect="onNewsSelect"
       />
       <NewsList 
         id="sportNews"
         :newsType="sportNews"
         :newsTitle="'SportNews'"
+        @newsSelect="onNewsSelect"
       />
       <NewsList 
         id="taiwanNews"
         :newsType="taiwanNews"
         :newsTitle="'TaiwanNews'"
+        @newsSelect="onNewsSelect"
       />
+       <!-- 用 @newsSelect接收來來自 child的event, 並且呼叫 onNewsSelect函數 -->
   </section>
 </template>
 
@@ -36,7 +41,12 @@ export default {
       "entertainmentNews", 
       "sportNews", 
       "taiwanNews"
-    ]
+    ],
+    methods:{
+      onNewsSelect(news){
+        this.$emit('newsSelect',news)
+      }
+    }
 };
 </script>
 

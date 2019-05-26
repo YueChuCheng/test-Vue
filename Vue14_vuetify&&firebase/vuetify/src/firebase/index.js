@@ -2,13 +2,13 @@
 import firebase from "firebase/app";
 
 let config = {
-  apiKey: "AIzaSyB3trr1732kgKhH5hO85h_XCs1wT091LtE",
-  authDomain: "test-bed31.firebaseapp.com",
-  databaseURL: "https://test-bed31.firebaseio.com",
-  projectId: "test-bed31",
-  storageBucket: "test-bed31.appspot.com",
-  messagingSenderId: "428314044312",
-  appId: "1:428314044312:web:322fdd9eadd2ef47"
+  apiKey: "AIzaSyBmCbM021uLYjts7EUMNG-kTSe0gyhehqY",
+  authDomain: "test2-ef752.firebaseapp.com",
+  databaseURL: "https://test2-ef752.firebaseio.com",
+  projectId: "test2-ef752",
+  storageBucket: "test2-ef752.appspot.com",
+  messagingSenderId: "34967876915",
+  appId: "1:34967876915:web:4655eff54d7882ed"
   };
 
   firebase.initializeApp(config);

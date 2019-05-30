@@ -10,7 +10,7 @@ import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'app',
-  components: {
+  components: {  //• 在components宣告使用的自訂 元件 
     HelloWorld
   }
 }

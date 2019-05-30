@@ -10,15 +10,18 @@
 
 <script>
 import NewsCard from "./NewsCard";
-
+import { mapGetters } from 'vuex';
 export default {
   name: "SelectedNews",
   components: {
     NewsCard
   },
-  props: [
+  computed: mapGetters([
       "selectedNews"
-  ]
+  ])
+  //props: [
+  //    "selectedNews"
+  //]
 };
 </script>
 

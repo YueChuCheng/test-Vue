@@ -3,7 +3,7 @@ new Vue ({
     data: {
         textInput: ''
     },
-    computed: {
+    computed: { //設定元件輸出變數
        textOutput:function(){
            //data只用來定義變數，在使用變數時，直接用變數的properties名稱 
            return `my input is ${this.textInput}`; //印出字串
